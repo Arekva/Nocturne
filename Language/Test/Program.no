@@ -1,0 +1,8 @@
+using System;
+
+exposed class MyWorkSpace.Program {
+    exposed Main(strings args) : void { // ": void" is optional
+        string message = "Hello World !";
+        Out.PrintLine(message);
+    }
+}
