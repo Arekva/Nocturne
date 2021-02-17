@@ -1,0 +1,6 @@
+{
+    "Packages" : [
+        "Core/Core.nopkg",
+        "Test/Test.nopkg"
+    ]
+}

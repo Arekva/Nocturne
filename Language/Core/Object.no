@@ -4,7 +4,7 @@ using System.Reflection;
 exposed class Object // base class for any other class, primitive so isn't in System namespace.
 {
     exposed sealed System.Type Type => throw create WIPException($"{Current.Function} hasn't been implemented yet."); //...
-    exposed sealed nint Size => GetSize();
+    exposed sealed size Size => GetSize();
 
     exposed Object() { /*...*/ }
 
