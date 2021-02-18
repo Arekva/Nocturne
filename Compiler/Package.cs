@@ -7,15 +7,18 @@ namespace Nocturne.Compiler
 {
     public class Package
     {
+        public string Name { get; init; }
         public SourceFile[] Includes { get; init; }
 
         public Package(string path)
         {
-            string[] files = JsonSerializer.Deserialize<PackageJson>(path).Includes;
-            int fcount = files.Length;
-
-            throw new NotImplementedException();
-            //Parallel.For(0, fcount, i => Includes[i] = new Package(Path.Combine(Directory, files[i])));
+            string[] includes = JsonSerializer.Deserialize<PackageJson>(File.ReadAllText(path)).Includes;
+            int icount = includes.Length;
+            
+            Name = Path.GetFileNameWithoutExtension(path);
+            Includes = new SourceFile[icount];
+            
+            Parallel.For(0, icount, i => Includes[i] = new SourceFile(Path.Combine(Path.GetDirectoryName(path), includes[i])));
         }
     }
 }

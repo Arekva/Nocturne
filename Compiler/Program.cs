@@ -6,7 +6,7 @@ namespace Nocturne.Compiler
     {
         static void Main(string[] args)
         {
-            Project prj = 
+            Project prj = new Project("../../../../Language/Nocturne.noprj");
             Console.WriteLine();
         }
     }

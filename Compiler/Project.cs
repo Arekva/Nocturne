@@ -15,13 +15,13 @@ namespace Nocturne.Compiler
 
         public Project(string path)
         {
-            if (path.HasContents()) throw new ArgumentNullException(nameof(path), "Please specify a project path.");
+            if (!path.HasContents()) throw new ArgumentNullException(nameof(path), "Please specify a project path.");
             
             string file = File.ReadAllText(path);
             if (file == null || !file.HasContents()) throw new SourceException("Specified file has no content at all.");
 
             Name = Path.GetFileNameWithoutExtension(path);
-            Directory = Path.Combine(path, "/../");
+            Directory = Path.GetDirectoryName(path);
 
             string[] packages = null;
 
